@@ -1,162 +1,50 @@
-# Pipeline Name
+# quantitate-ProteomicProtein
 
-[![Prepare release](https://img.shields.io/badge/Action-Create%20New%20Release-blue)](https://github.com/theboutroslab/template-NextflowPipeline/actions/workflows/prepare-release.yaml)
+Quantitate proteins and peptides across compatible consensusXML inputs with OpenMS ProteinQuantifier. The pipeline retains two protein grouping workflows.
 
-- [Pipeline Name](#pipeline-name)
-  - [Overview](#overview)
-  - [How To Run](#how-to-run)
-  - [Flow Diagram](#flow-diagram)
-  - [Pipeline Steps](#pipeline-steps)
-    - [1. Step/Process 1](#1-stepprocess-1)
-    - [2. Step/Process 2](#2-stepprocess-2)
-    - [3. Step/Process n](#3-stepprocess-n)
-  - [Inputs](#inputs)
-  - [Outputs](#outputs)
-  - [Testing and Validation](#testing-and-validation)
-    - [Test Data Set](#test-data-set)
-    - [Validation <version number\>](#validation-version-number)
-    - [Validation Tool](#validation-tool)
-  - [References](#references)
-  - [Discussions](#discussions)
-  - [Contributors](#contributors)
-  - [License](#license)
-## Overview
+## Workflows
 
-A 3-4 sentence summary of the pipeline, including the pipeline's purpose, the type of expected scientific inputs/outputs of the pipeline (e.g: FASTQs and BAMs), and a list of tools/steps in the pipeline.
+![Protein quantification workflow](docs/pipeline-flow.svg)
 
----
+![Protein quantification workflow](docs/pipeline-flow.svg)
 
-## How To Run
+- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA and convert it to pepXML. Combine pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
+- **ProteinInferencer:** Optionally merge consensusXML files, run OpenMS ProteinInference, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
 
-1. Update the params section of the .config file
-
-2. Update the input yaml
-
-3. See the submission script, [here](https://github.com/theboutroslab/tool-submit-nf), to submit your pipeline
-
----
-
-## Flow Diagram
-
-A directed acyclic graph of your pipeline. The [PlantUML](https://plantuml.com/) code defining this diagram is version-controlled in the [docs/](./docs/) folder, and a [GitHub Action](https://github.com/theboutroslab/tool-PlantUML-action) automatically regenerates the SVG image when that file is changed.
-
-![Pipeline Graph](./docs/pipeline-flow.svg)
-
----
-
-## Pipeline Steps
-
-### 1. Step/Process 1
-
-> A 2-3 sentence description of each step/proccess in your pipeline that includes the purpose of the step/process, the tool(s) being used and their version, and the expected scientific inputs/outputs (e.g: FASTQs and BAMs) of the pipeline.
-
-### 2. Step/Process 2
-
-> A 2-3 sentence description of each step/proccess in your pipeline that includes the purpose of the step/process, the tool(s) being used and their version, and the expected scientific inputs/outputs (e.g: FASTQs and BAMs) of the pipeline.
-
-### 3. Step/Process n
-
-> A 2-3 sentence description of each step/proccess in your pipeline that includes the purpose of the step/process, the tool(s) being used and their version, and the expected scientific inputs/outputs (e.g: FASTQs and BAMs) of the pipeline.
-
----
+The pipeline does not impose LFQ sample grouping or TMT plex logic. Input consensusXML files must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.
 
 ## Inputs
 
-### Input YAML
+Create a CSV with a single `path` column for `input_consensusXML`. For ProteinProphet, create another `path` CSV for `unfiltered_idXML` and provide the matching target-decoy FASTA and decoy prefix. See [example CSV](input/input.csv) and [configuration template](config/template.config).
 
-> include an example of the organization structure within the YAML. Example:
-```yaml
-input 1: 'patient_id'
-input:
-    normal:
-      - id: <normal id>
-        BAM: </path/to/normal.bam>
-    tumor:
-      - id: <tumor id>
-        BAM: </path/to/tumor.bam>
-```
+Key parameters: `output_dir`, `project_name`, `input_consensusXML`, `protein_grouping_algorithm` (`ProteinProphet` or `ProteinInferencer`), `merge_consensus`, `save_intermediate_files`, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports `protein_inference_protein_fdr` and `filter_protein_fdr`. When filtering is enabled, set both switches to `true` and supply `protein_fdr_cutoff` (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.
 
-### Config
-
-| Field | Type | Required | Description |
-| ----- | ---- | ------------ | ------------------------ |
-| param 1 | _type_ | yes/no | 1-2 sentence description of the parameter, including any defaults if any. |
-| param 2 | _type_ | yes/no | 1-2 sentence description of the parameter, including any defaults if any. |
-| param n | _type_ | yes/no | 1-2 sentence description of the parameter, including any defaults if any. |
-| `work_dir` | path | no | Path of working directory for Nextflow. When included in the sample config file, Nextflow intermediate files and logs will be saved to this directory. With ucla_cds, the default is `/scratch` and should only be changed for testing/development. Changing this directory to `/hot` or `/tmp` can lead to high server latency and potential disk space limitations, respectively. |
-
-> Include the optional param `work_dir` in the inputs accompanied by a warning of the potentials dangers of using the param. Update the warning if necessary.
-
----
+Use `nextflow run main.nf -c /path/to/run.config -profile standard`. The `docker`, `apptainer`, `singularity`, and `local` profiles are also available. The shared configuration submodule must be initialized. The iProphet and ProteinProphet steps use the Philosopher executable bundled in `fcyucn/fragpipe:24.0`. Resource allocations come from [resources.json](config/resources.json) and can be adjusted with `resource_allocation_profile_tag` and `base_resource_update`.
 
 ## Outputs
 
-<!-- List and describe the final output(s) of the pipeline. -->
+Under `<output_dir>/quantitate-ProteomicProtein-<version>/<project_name>/OpenMS-<version>/output/`:
 
-| Output | Description |
-| ------------ | ------------------------ |
-| ouput 1 | 1 - 2 sentence description of the output. |
-| ouput 2 | 1 - 2 sentence description of the output. |
-| ouput n | 1 - 2 sentence description of the output. |
+| File | Contents |
+| --- | --- |
+| `<project_name>_ProteinQuantifier_protein.csv` | Protein abundance table |
+| `<project_name>_ProteinQuantifier_peptide.csv` | Peptide abundance table |
+| Merged or resolved `*.consensusXML` | Published consensusXML, depending on grouping branch and merge option |
 
----
+Process logs and Nextflow reports are under the sibling timestamped log directory. Optional intermediates are under `intermediate/`. The pipeline does not currently generate mzTab.
 
-## Testing and Validation
+## Testing
 
-### Test Data Set
+See [test/README.md](test/README.md) and [`.env-template`](.env-template) for the two NFTest integration cases and required environment variables. They require external fixtures and containers on the cluster.
 
-A 2-3 sentence description of the test data set(s) used to validate and test this pipeline. If possible, include references and links for how to access and use the test dataset
+## Scientific review points
 
-### Validation <version number\>
+The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. These choices are retained pending review for each study. They can affect protein grouping, shared-peptide attribution, and downstream interpretation.
 
-| Input/Output | Description | Result |
-| ------------ | ------------------------ | ------------------------ |
-| metric 1 | 1 - 2 sentence description of the metric | quantifiable result |
-| metric 2 | 1 - 2 sentence description of the metric | quantifiable result |
-| metric n | 1 - 2 sentence description of the metric | quantifiable result |
+## Reference
 
-- [Reference/External Link/Path 1 to any files/plots or other validation results](<link>)
-- [Reference/External Link/Path 2 to any files/plots or other validation results](<link>)
-- [Reference/External Link/Path n to any files/plots or other validation results](<link>)
-
-### Validation Tool
-
-Included is a template for validating your input files. For more information on the tool check out: https://github.com/theboutroslab/package-PipeVal
-
----
-
-## References
-
-1. [Reference 1](<links-to-papers/external-code/documentation/metadata/other-repos/or-anything-else>)
-2. [Reference 2](<links-to-papers/external-code/documentation/metadata/other-repos/or-anything-else>)
-3. [Reference n](<links-to-papers/external-code/documentation/metadata/other-repos/or-anything-else>)
-
----
-
-## Discussions
-
-- [Issue tracker](<link-to-repo-issues-page>) to report errors and enhancement ideas.
-- Discussions can take place in [<pipeline> Discussions](<link-to-repo-discussions-page>)
-- [<pipeline> pull requests](<link-to-repo-pull-requests>) are also open for discussion
-
----
-
-## Contributors
-
-> Update link to repo-specific URL for GitHub Insights Contributors page.
-
-Please see list of [Contributors](https://github.com/theboutroslab/template-NextflowPipeline/graphs/contributors) at GitHub.
-
----
+Rost HL et al. OpenMS: a flexible open-source software platform for mass spectrometry data analysis. *Nature Methods* 2016;13:741–748. doi:10.1038/nmeth.3959.
 
 ## License
 
-[pipeline name] is licensed under the GNU General Public License version 2. See the file LICENSE for the terms of the GNU GPL license.
-
-<one line to give the program's name and a brief idea of what it does.>
-
-Copyright (C) 2026 Sanford Burnham Prebys Medical Discovery Institute ("Boutros Lab")
-
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+See [LICENSE](LICENSE).

@@ -1,0 +1,32 @@
+---
+global:
+  temp_dir: ./test/work
+  nf_config: test/global.config
+  remove_temp: false
+  clean_logs: true
+
+cases:
+  - name: test-integration-openms-lfq
+    message: Integration test with OpenMS ProteinInferencer
+    nf_script: main.nf
+    nf_config: test/test-integration-openms-lfq/test.config
+    skip: false
+    verbose: true
+  - name: test-integration-proteinprophet-lfq
+    message: Integration test with iProphet and ProteinProphet
+    nf_script: main.nf
+    nf_config: test/test-integration-proteinprophet-lfq/test.config
+    skip: false
+    verbose: true
+  - name: test-integration-openms-tmt
+    message: Integration test with TMT consensusXML and OpenMS ProteinInferencer
+    nf_script: main.nf
+    nf_config: test/test-integration-openms-tmt/test.config
+    skip: false
+    verbose: true
+  - name: test-integration-proteinprophet-tmt
+    message: Integration test with TMT consensusXML and ProteinProphet
+    nf_script: main.nf
+    nf_config: test/test-integration-proteinprophet-tmt/test.config
+    skip: false
+    verbose: true
