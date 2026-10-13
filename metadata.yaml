@@ -1,0 +1,11 @@
+---
+Category: "pipeline"
+Description: "Nextflow pipeline to quantify proteins and peptides from mass spectrometry based proteomic data"
+Maintainers: "Chenghao Zhu"
+Contributors: ["Lydia Y. Liu"]
+Languages: ["Nextflow", "Python"]
+Dependencies: ["Java", "Nextflow", "Docker or Apptainer", "OpenMS", "PyOpenMS", "FragPipe"]
+References: ""
+Tools: ["OpenMS", "PyOpenMS", "Philosopher"]
+Engineering_Owner: []
+Scientific_Owner: []

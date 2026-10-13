@@ -1,74 +1,70 @@
----
-dataset_id:
-  type: 'String'
-  required: true
-  help: 'Dataset identifier'
-patient_id:
-  type: 'String'
-  required: true
-  help: 'Patient identifier'
-sample_id:
-  type: 'String'
-  required: true
-  help: 'Sample identifier'
-param_name:
-  type: 'String'
-  required: false
-  default: 'foo-bar'
-  help: 'Example pipeline parameter; replace with pipeline-specific parameters'
 output_dir:
-  type: 'Path'
-  mode: 'w'
+  type: Path
+  mode: w
   required: true
-  help: 'Absolute path to output directory'
-apptainer_library:
-  type: 'Path'
-  mode: 'r'
+  help: Root output directory.
+project_name:
+  type: String
+  required: true
+  help: Project name for outputs.
+input_consensusXML:
+  type: Path
+  mode: r
+  required: true
+  help: CSV with a path column of consensusXML files.
+unfiltered_idXML:
+  type: Path
+  mode: r
   required: false
-  help: 'Absolute path to Apptainer library directory'
-apptainer_cache:
-  type: 'Path'
-  mode: 'w'
+  help: CSV of unfiltered PEP-scored idXML files for ProteinProphet.
+decoy_database:
+  type: Path
+  mode: r
   required: false
-  help: 'Absolute path to Apptainer cache directory'
-singularity_library:
-  type: 'Path'
-  mode: 'r'
+  help: Target-decoy FASTA used for the idXML searches.
+decoy_string:
+  type: String
   required: false
-  help: 'Absolute path to Singularity library directory'
-singularity_cache:
-  type: 'Path'
-  mode: 'w'
+  help: Prefix identifying decoy protein accessions.
+protein_grouping_algorithm:
+  type: String
   required: false
-  help: 'Absolute path to Singularity cache directory'
+  help: ProteinProphet or ProteinInferencer.
+merge_consensus:
+  type: Bool
+  required: false
+  help: Merge input consensusXML files before inference and quantification.
+filter_protein_fdr:
+  type: Bool
+  required: false
+  help: Filter features by protein level FDR when inference calculates it.
+protein_inference_protein_fdr:
+  type: Bool
+  required: false
+  help: Calculate protein level FDR in ProteinInference.
+save_intermediate_files:
+  type: Bool
+  required: false
+  help: Publish intermediate files.
+resource_allocation_profile_tag:
+  type: String
+  required: false
+  help: Resource profile in resources.json.
 base_resource_update:
-  type: 'ResourceUpdateNamespace'
+  type: ResourceUpdateNamespace
   required: false
-  help: 'User-defined modifications for adjusting base resource allocations for processes'
+  help: Per-process resource adjustments.
   elements:
     memory:
-      type: 'ResourceUpdateList'
+      type: ResourceUpdateList
       required: false
-      help: 'List of memory updates'
+      help: Memory adjustments.
     cpus:
-      type: 'ResourceUpdateList'
+      type: ResourceUpdateList
       required: false
-      help: 'List of CPU updates'
-input:
-  type: 'InputNamespace'
-  required: true
-  help: 'Input samples'
-  elements:
-    BAM:
-      type: 'InputBAMNamespace'
-      required: true
-      help: 'Input BAM samples grouped by sample type'
-      elements:
-        normal:
-          type: 'BAMEntryList'
-          required: false
-          help: 'Input normal sample'
-        tumor:
-          type: 'BAMEntryList'
-          required: false
-          help: 'Input tumor sample'
+      help: CPU adjustments.
+work_dir:
+  type: Path
+  mode: w
+  required: false
+  help: Optional Nextflow working directory.
