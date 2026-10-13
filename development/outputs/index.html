@@ -41,19 +41,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../how-to-run/">How To Run</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../flow-diagram/">Flow Diagram</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../pipeline-steps/">Pipeline Steps</a>
+                <li class="toctree-l1"><a class="reference internal" href="../workflows/">Workflows</a>
                 </li>
               </ul>
               <ul>
@@ -67,19 +55,15 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../testing-and-validation/">Testing and Validation</a>
+                <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../references/">References</a>
+                <li class="toctree-l1"><a class="reference internal" href="../scientific-review-points/">Scientific review points</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../discussions/">Discussions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../contributors/">Contributors</a>
+                <li class="toctree-l1"><a class="reference internal" href="../reference/">Reference</a>
                 </li>
               </ul>
               <ul>
@@ -102,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Outputs</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/40819ace11a3d77e1e787aa10753187861f924a9/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -111,37 +95,36 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="outputs">Outputs</h2>
-<!-- List and describe the final output(s) of the pipeline. -->
-
+<p>Under <code>&lt;output_dir&gt;/quantitate-ProteomicProtein-&lt;version&gt;/&lt;project_name&gt;/OpenMS-&lt;version&gt;/output/</code>:</p>
 <table>
 <thead>
 <tr>
-<th>Output</th>
-<th>Description</th>
+<th>File</th>
+<th>Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ouput 1</td>
-<td>1 - 2 sentence description of the output.</td>
+<td><code>&lt;project_name&gt;_ProteinQuantifier_protein.csv</code></td>
+<td>Protein abundance table</td>
 </tr>
 <tr>
-<td>ouput 2</td>
-<td>1 - 2 sentence description of the output.</td>
+<td><code>&lt;project_name&gt;_ProteinQuantifier_peptide.csv</code></td>
+<td>Peptide abundance table</td>
 </tr>
 <tr>
-<td>ouput n</td>
-<td>1 - 2 sentence description of the output.</td>
+<td>Merged or resolved <code>*.consensusXML</code></td>
+<td>Published consensusXML, depending on grouping branch and merge option</td>
 </tr>
 </tbody>
 </table>
-<hr />
+<p>Process logs and Nextflow reports are under the sibling timestamped log directory. Optional intermediates are under <code>intermediate/</code>. The pipeline does not currently generate mzTab.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../inputs/" class="btn btn-neutral float-left" title="Inputs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../testing-and-validation/" class="btn btn-neutral float-right" title="Testing and Validation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../testing/" class="btn btn-neutral float-right" title="Testing">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -171,7 +154,7 @@
       <span><a href="../inputs/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../testing-and-validation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../testing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

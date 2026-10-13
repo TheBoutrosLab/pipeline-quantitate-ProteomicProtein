@@ -41,28 +41,12 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../how-to-run/">How To Run</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../flow-diagram/">Flow Diagram</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../pipeline-steps/">Pipeline Steps</a>
+                <li class="toctree-l1"><a class="reference internal" href="../workflows/">Workflows</a>
                 </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Inputs</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#input-yaml">Input YAML</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#config">Config</a>
-    </li>
     </ul>
                 </li>
               </ul>
@@ -71,19 +55,15 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../testing-and-validation/">Testing and Validation</a>
+                <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../references/">References</a>
+                <li class="toctree-l1"><a class="reference internal" href="../scientific-review-points/">Scientific review points</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../discussions/">Discussions</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../contributors/">Contributors</a>
+                <li class="toctree-l1"><a class="reference internal" href="../reference/">Reference</a>
                 </li>
               </ul>
               <ul>
@@ -106,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Inputs</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/40819ace11a3d77e1e787aa10753187861f924a9/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -115,65 +95,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="inputs">Inputs</h2>
-<h3 id="input-yaml">Input YAML</h3>
-<blockquote>
-<p>include an example of the organization structure within the YAML. Example:</p>
-</blockquote>
-<pre><code class="language-yaml">input 1: 'patient_id'
-input:
-    normal:
-      - id: &lt;normal id&gt;
-        BAM: &lt;/path/to/normal.bam&gt;
-    tumor:
-      - id: &lt;tumor id&gt;
-        BAM: &lt;/path/to/tumor.bam&gt;
-</code></pre>
-<h3 id="config">Config</h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>param 1</td>
-<td><em>type</em></td>
-<td>yes/no</td>
-<td>1-2 sentence description of the parameter, including any defaults if any.</td>
-</tr>
-<tr>
-<td>param 2</td>
-<td><em>type</em></td>
-<td>yes/no</td>
-<td>1-2 sentence description of the parameter, including any defaults if any.</td>
-</tr>
-<tr>
-<td>param n</td>
-<td><em>type</em></td>
-<td>yes/no</td>
-<td>1-2 sentence description of the parameter, including any defaults if any.</td>
-</tr>
-<tr>
-<td><code>work_dir</code></td>
-<td>path</td>
-<td>no</td>
-<td>Path of working directory for Nextflow. When included in the sample config file, Nextflow intermediate files and logs will be saved to this directory. With ucla_cds, the default is <code>/scratch</code> and should only be changed for testing/development. Changing this directory to <code>/hot</code> or <code>/tmp</code> can lead to high server latency and potential disk space limitations, respectively.</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Include the optional param <code>work_dir</code> in the inputs accompanied by a warning of the potentials dangers of using the param. Update the warning if necessary.</p>
-</blockquote>
-<hr />
+<p>Create a CSV with a single <code>path</code> column for <code>input_consensusXML</code>. For ProteinProphet, create another <code>path</code> CSV for <code>unfiltered_idXML</code> and provide the matching target-decoy FASTA and decoy prefix. See <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/input/input.csv">example CSV</a> and <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/config/template.config">configuration template</a>.</p>
+<p>Key parameters: <code>output_dir</code>, <code>project_name</code>, <code>input_consensusXML</code>, <code>protein_grouping_algorithm</code> (<code>ProteinProphet</code> or <code>ProteinInferencer</code>), <code>merge_consensus</code>, <code>save_intermediate_files</code>, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports <code>protein_inference_protein_fdr</code> and <code>filter_protein_fdr</code>. When filtering is enabled, set both switches to <code>true</code> and supply <code>protein_fdr_cutoff</code> (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.</p>
+<p>Use <code>nextflow run main.nf -c /path/to/run.config -profile standard</code>. The <code>docker</code>, <code>apptainer</code>, <code>singularity</code>, and <code>local</code> profiles are also available. The shared configuration submodule must be initialized. The iProphet and ProteinProphet steps use the Philosopher executable bundled in <code>fcyucn/fragpipe:24.0</code>. Resource allocations come from <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/config/resources.json">resources.json</a> and can be adjusted with <code>resource_allocation_profile_tag</code> and <code>base_resource_update</code>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../pipeline-steps/" class="btn btn-neutral float-left" title="Pipeline Steps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../workflows/" class="btn btn-neutral float-left" title="Workflows"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../outputs/" class="btn btn-neutral float-right" title="Outputs">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -201,7 +130,7 @@ input:
         </span>
     
     
-      <span><a href="../pipeline-steps/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../workflows/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../outputs/" style="color: #fcfcfc">Next &raquo;</a></span>
