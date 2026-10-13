@@ -14,9 +14,9 @@ PARAMETER_MAPPER = [
     'filter_protein_precursor_length': '-precursor:length',
     'filter_protein_precursor_charge': '-precursor:charge',
 
-    'filter_protein_score_pep': '-score:pep',
-    'filter_protein_score_prot': '-score:prot',
-    'filter_protein_score_protgroup': '-score:protgroup',
+    'filter_protein_score_pep': '-score:peptide',
+    'filter_protein_score_prot': '-score:protein',
+    'filter_protein_score_protgroup': '-score:proteingroup',
 
     'filter_protein_whitelist_proteins': '-whitelist:proteins',
     'filter_protein_whitelist_protein_accessions': '-whitelist:protein_accessions',
@@ -71,6 +71,7 @@ process filter_proteins {
         -in ${consensusXML} \\
         -out ${output_file} \\
         -threads ${task.cpus} \\
+        -score:protein ${params.protein_fdr_cutoff} \\
         -delete_unreferenced_peptide_hits \\
         ${extra_args}
     """

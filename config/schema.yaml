@@ -38,6 +38,10 @@ filter_protein_fdr:
   type: Bool
   required: false
   help: Filter features by protein level FDR when inference calculates it.
+protein_fdr_cutoff:
+  type: Number
+  required: false
+  help: Required protein q-value cutoff when filter_protein_fdr is true; must be at least 0 and below 1.
 protein_inference_protein_fdr:
   type: Bool
   required: false

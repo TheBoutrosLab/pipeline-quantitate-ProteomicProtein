@@ -6,9 +6,12 @@ FLAGS = []
 
 PARAMETER_MAPPER = [
     'protein_quantifier_debug': '-debug',
-    'protein_quantifier_top': '-top',
-    'protein_quantifier_average': '-average',
-    'protein_quantifier_ratios': '-ratios',
+    'protein_quantifier_top': '-top:N',
+    'protein_quantifier_average': '-top:aggregate',
+    'protein_quantifier_include_all': '-top:include_all',
+    'protein_quantifier_best_charge_and_fraction': '-best_charge_and_fraction',
+    'protein_quantifier_consensus_normalize': '-consensus:normalize',
+    'protein_quantifier_consensus_fix_peptides': '-consensus:fix_peptides',
     'protein_quantifier_greedy_group_resolution': '-greedy_group_resolution',
     'protein_quantifier_format_separator': '-format:separator',
     'protein_quantifier_format_quoting': '-format:quoting',
@@ -16,10 +19,7 @@ PARAMETER_MAPPER = [
 ]
 
 FLAG_MAPPER = [
-    'protein_quantifier_include_all': '-include_all',
-    'protein_quantifier_best_charge_and_fraction': '-best_charge_and_fraction',
-    'protein_quantifier_consensus_normalize': '-consensus:normalize',
-    'protein_quantifier_consensus_fix_peptides': '-consensus:fix_peptides'
+    'protein_quantifier_ratios': '-ratios'
 ]
 
 process quantify_proteins {
