@@ -8,7 +8,7 @@ Quantitate proteins and peptides across compatible consensusXML inputs with Open
 
 ![Protein quantification workflow](docs/pipeline-flow.svg)
 
-- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA and convert it to pepXML and repair OpenMS enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
+- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
 - **ProteinInferencer:** Optionally merge consensusXML files, run OpenMS ProteinInference, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
 
 The pipeline does not impose LFQ sample grouping or TMT plex logic. Input consensusXML files must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.
@@ -41,7 +41,7 @@ See [test/README.md](test/README.md) and [`.env-template`](.env-template) for th
 
 The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. These choices can affect protein grouping, shared-peptide attribution, and downstream interpretation.
 
-The pepXML repair recalculates `num_tol_term` from each protein match’s flanks and the recorded C-terminal enzyme rule. It retains the PEP-derived probability in all NTT slots because that score is not separately calibrated by terminus class. Matches with unknown flanks retain their existing NTT and are counted in the process log. OpenMS also writes zero missed cleavages for every hit; this repair does not change that separate field.
+The separate `extract_enzyme_rule` process reads the digestion enzyme name and cleavage regex from each idXML and passes a JSON rule file alongside it through conversion. The pepXML repair checks the enzyme name, corrects its cleavage specificity, and recalculates `num_tol_term` for each protein match from its flanking residues. One-residue C-terminal and N-terminal rules are supported; other regexes fail explicitly because the pepXML flanks may not contain enough sequence context. The repair retains the PEP-derived probability in all NTT slots because that score is not separately calibrated by terminus class. Matches with unknown flanks retain their existing NTT and are counted in the process log. OpenMS also writes zero missed cleavages for every hit; this repair does not change that separate field.
 
 ## Reference
 

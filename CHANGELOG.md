@@ -5,6 +5,7 @@
 ### Fixed
 
 - Repair OpenMS pepXML enzymatic-terminus annotations before iProphet so ProteinProphet can use PEP-derived probabilities for Trypsin/P and other C-terminal enzyme rules.
+- Extract the OpenMS enzyme rule in a dedicated process and use it to repair both N-terminal and C-terminal cleavage annotations instead of trusting OpenMS-exported pepXML `sense`.
 - Fail before ProteinQuantifier when ProteinProphet supplies no positive-probability groups.
 - Preserve separate parent and indistinguishable protein groups when filtering ProteinProphet or future Fido inference results.
 

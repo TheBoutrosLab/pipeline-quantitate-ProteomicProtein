@@ -6,6 +6,7 @@ include { filter_proteins } from "${projectDir}/modules/filter_proteins"
 include { resolve_conflict } from "${projectDir}/modules/resolve_conflict"
 include { quantify_proteins } from "${projectDir}/modules/quantify_proteins"
 include { set_databasePath } from "${projectDir}/modules/set_databasePath"
+include { extract_enzyme_rule } from "${projectDir}/modules/extract_enzyme_rule"
 include { run_iProphet } from "${projectDir}/modules/run_iProphet"
 include { run_ProteinProphet } from "${projectDir}/modules/run_ProteinProphet"
 include { convert_idXML2pepXML } from "${projectDir}/modules/convert_idXML2pepXML"
@@ -38,7 +39,8 @@ workflow {
         // can be different because of soft links. Have to set them all to the same value otherwise
         // ProteinProphet will complain.
         set_databasePath(ich_unfiltered_idXML, file(params.decoy_database))
-        convert_idXML2pepXML(set_databasePath.out[0])
+        extract_enzyme_rule(set_databasePath.out[0])
+        convert_idXML2pepXML(extract_enzyme_rule.out[0])
         fix_pepxml_termini(convert_idXML2pepXML.out[0])
         run_iProphet(fix_pepxml_termini.out[0].collect(), file(params.decoy_database))
         run_ProteinProphet(run_iProphet.out[0], file(params.decoy_database))

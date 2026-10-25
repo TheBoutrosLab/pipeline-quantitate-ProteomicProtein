@@ -72,6 +72,18 @@
                 "max": "8 GB"
             }
         },
+        "extract_enzyme_rule": {
+            "cpus": {
+                "min": 1,
+                "fraction": 0.1,
+                "max": 4
+            },
+            "memory": {
+                "min": "2 GB",
+                "fraction": 0.1,
+                "max": "8 GB"
+            }
+        },
         "convert_idXML2pepXML": {
             "cpus": {
                 "min": 1,

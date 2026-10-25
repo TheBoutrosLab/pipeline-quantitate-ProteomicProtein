@@ -16,7 +16,7 @@ process fix_pepxml_termini {
         saveAs: { "log${file(it).name}" }
 
     input:
-        file input_pepXML
+        tuple file(input_pepXML), file(enzyme_rule_json)
 
     output:
         file output_pepXML
@@ -27,6 +27,7 @@ process fix_pepxml_termini {
     """
     python3 ${projectDir}/src/FixPepXMLTermini.py \\
         --input-path ${input_pepXML} \\
+        --enzyme-rule-path ${enzyme_rule_json} \\
         --output-path ${output_pepXML}
     """
 }
