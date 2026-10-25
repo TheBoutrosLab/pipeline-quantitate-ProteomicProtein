@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased] - 2026-10-25
+## [Unreleased]
+
+## [1.1.0] - 2026-10-25
 
 ### Fixed
 
@@ -19,3 +21,7 @@
 - Added FragPipe 24.0 execution for iProphet and ProteinProphet, with matching OpenMS and Python processing steps.
 - Added shared schema, resource allocation, container profiles, and environment-driven NFTest integration cases for LFQ and TMT inputs with both grouping algorithms.
 - Added pipeline documentation and a schematic showing the two separate grouping workflows and their inputs and outputs.
+
+[1.0.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/releases/tag/v1.0.0
+[1.1.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.0.0...v1.1.0
+[unreleased]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.0...HEAD
