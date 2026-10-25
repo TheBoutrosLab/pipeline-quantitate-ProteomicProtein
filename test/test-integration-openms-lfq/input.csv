@@ -1,2 +1,2 @@
 path
-$TEST_DATA_DIR/ecoli_lfq/quantitate-ProteomicLFQ/quantitate-ProteomicLFQ-1.0.0/ECOLI_LFQ/OpenMS-3.5.0/output/FileMerger/ECOLI_LFQ_FileMerger.consensusXML
+$TEST_DATA_DIR/ecoli_lfq//quantitate-ProteomicLFQ-internal_only/quantitate-ProteomicLFQ-1.0.0/ECOLI_LFQ/OpenMS-3.5.0/output/FileMerger/ECOLI_LFQ_FileMerger.consensusXML

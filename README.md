@@ -8,7 +8,7 @@ Quantitate proteins and peptides across compatible consensusXML inputs with Open
 
 ![Protein quantification workflow](docs/pipeline-flow.svg)
 
-- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA and convert it to pepXML. Combine pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
+- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA and convert it to pepXML and repair OpenMS enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
 - **ProteinInferencer:** Optionally merge consensusXML files, run OpenMS ProteinInference, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
 
 The pipeline does not impose LFQ sample grouping or TMT plex logic. Input consensusXML files must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.
@@ -19,7 +19,7 @@ Create a CSV with a single `path` column for `input_consensusXML`. For ProteinPr
 
 Key parameters: `output_dir`, `project_name`, `input_consensusXML`, `protein_grouping_algorithm` (`ProteinProphet` or `ProteinInferencer`), `merge_consensus`, `save_intermediate_files`, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports `protein_inference_protein_fdr` and `filter_protein_fdr`. When filtering is enabled, set both switches to `true` and supply `protein_fdr_cutoff` (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.
 
-Use `nextflow run main.nf -c /path/to/run.config -profile standard`. The `docker`, `apptainer`, `singularity`, and `local` profiles are also available. The shared configuration submodule must be initialized. The iProphet and ProteinProphet steps use the Philosopher executable bundled in `fcyucn/fragpipe:24.0`. Resource allocations come from [resources.json](config/resources.json) and can be adjusted with `resource_allocation_profile_tag` and `base_resource_update`.
+Use `nextflow run main.nf -c /path/to/run.config -profile standard`. The `docker`, `apptainer`, `singularity`, and `local` profiles are also available. The shared configuration submodule must be initialized. The pepXML repair uses `lxml` in the configured FragPipe image. The iProphet and ProteinProphet steps use the Philosopher executable bundled in `fcyucn/fragpipe:24.0`. Resource allocations come from [resources.json](config/resources.json) and can be adjusted with `resource_allocation_profile_tag` and `base_resource_update`.
 
 ## Outputs
 
@@ -39,7 +39,9 @@ See [test/README.md](test/README.md) and [`.env-template`](.env-template) for th
 
 ## Scientific review points
 
-The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. These choices are retained pending review for each study. They can affect protein grouping, shared-peptide attribution, and downstream interpretation.
+The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. These choices can affect protein grouping, shared-peptide attribution, and downstream interpretation.
+
+The pepXML repair recalculates `num_tol_term` from each protein match’s flanks and the recorded C-terminal enzyme rule. It retains the PEP-derived probability in all NTT slots because that score is not separately calibrated by terminus class. Matches with unknown flanks retain their existing NTT and are counted in the process log. OpenMS also writes zero missed cleavages for every hit; this repair does not change that separate field.
 
 ## Reference
 

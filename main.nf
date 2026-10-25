@@ -9,6 +9,7 @@ include { set_databasePath } from "${projectDir}/modules/set_databasePath"
 include { run_iProphet } from "${projectDir}/modules/run_iProphet"
 include { run_ProteinProphet } from "${projectDir}/modules/run_ProteinProphet"
 include { convert_idXML2pepXML } from "${projectDir}/modules/convert_idXML2pepXML"
+include { fix_pepxml_termini } from "${projectDir}/modules/fix_pepxml_termini"
 include { convert_protXML2idXML } from "${projectDir}/modules/convert_protXML2idXML"
 include { filter_protein_groups } from "${projectDir}/modules/filter_protein_groups"
 
@@ -38,7 +39,8 @@ workflow {
         // ProteinProphet will complain.
         set_databasePath(ich_unfiltered_idXML, file(params.decoy_database))
         convert_idXML2pepXML(set_databasePath.out[0])
-        run_iProphet(convert_idXML2pepXML.out[0].collect(), file(params.decoy_database))
+        fix_pepxml_termini(convert_idXML2pepXML.out[0])
+        run_iProphet(fix_pepxml_termini.out[0].collect(), file(params.decoy_database))
         run_ProteinProphet(run_iProphet.out[0], file(params.decoy_database))
         convert_protXML2idXML(run_ProteinProphet.out[0])
         filter_protein_groups(convert_protXML2idXML.out[0])
