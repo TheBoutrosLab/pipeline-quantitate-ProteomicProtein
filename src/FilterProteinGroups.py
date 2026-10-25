@@ -5,6 +5,7 @@ ProteinProphet may assign zero probability to proteins whose peptides are
 explained by other proteins in the same parent group.
 """
 import argparse
+import sys
 from pyopenms import IdXMLFile, PeptideIdentificationList, ProteinIdentification
 
 def parse_args() -> argparse.Namespace:
@@ -56,6 +57,30 @@ def create_protein_identification(proteins:ProteinIdentification) -> ProteinIden
 
     return new_proteins
 
+
+def warn_zero_scored_subgroups(proteins, parents, subgroups, algorithm):
+    """Report retained subgroups containing zero-scored protein hits."""
+    zero_accessions = {
+        hit.getAccession() for hit in proteins.getHits() if hit.getScore() == 0.0
+    }
+    for subgroup in subgroups:
+        accessions = set(subgroup.accessions)
+        affected = sorted(accessions & zero_accessions)
+        if not affected:
+            continue
+        parent_probabilities = [
+            parent.probability for parent in parents
+            if accessions <= set(parent.accessions)
+        ]
+        print(
+            f'WARNING: Retained {algorithm} indistinguishable group '
+            f'{sorted(accessions)} contains ProteinHit accession(s) {affected} '
+            f'with score 0 (score type: {proteins.getScoreType()!r}) within '
+            f'parent group(s) with probability {parent_probabilities}. '
+            'ProteinQuantifier may quantify this group.',
+            file=sys.stderr
+        )
+
 def filter_groups(proteins: ProteinIdentification, cutoff: float,
         output: ProteinIdentification, algorithm: str):
     """Filter parent groups while preserving their indistinguishable subgroups."""
@@ -101,6 +126,10 @@ def filter_groups(proteins: ProteinIdentification, cutoff: float,
             'No indistinguishable groups remain after filtering; '
             'inspect the input group memberships.'
         )
+
+    warn_zero_scored_subgroups(
+        proteins, retained_parents, retained_indistinguishable, algorithm
+    )
 
     for group in retained_parents:
         output.insertProteinGroup(group)

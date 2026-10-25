@@ -8,6 +8,7 @@
 - Extract the OpenMS enzyme rule in a dedicated process and use it to repair both N-terminal and C-terminal cleavage annotations instead of trusting OpenMS-exported pepXML `sense`.
 - Fail before ProteinQuantifier when ProteinProphet supplies no positive-probability groups.
 - Preserve separate parent and indistinguishable protein groups when filtering ProteinProphet or future Fido inference results.
+- Warn when a retained protein group contains a zero-scored protein hit that remains in a quantifiable indistinguishable subgroup.
 
 ## [1.0.0] - 2026-10-13
 
