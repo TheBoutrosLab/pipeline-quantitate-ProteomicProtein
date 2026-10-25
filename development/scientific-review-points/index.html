@@ -86,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Scientific review points</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/3090353302e39057159244cb9a5be341fdb53e7f/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/5f1213e53f5e153dac9062968c42cdef17d03daf/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -95,7 +95,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="scientific-review-points">Scientific review points</h2>
-<p>The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. These choices are retained pending review for each study. They can affect protein grouping, shared-peptide attribution, and downstream interpretation.</p>
+<p>The established workflow combines all idXML files with iProphet before ProteinProphet, removes zero-probability parent groups, and makes protein FDR filtering optional only in the ProteinInferencer branch. For either supported grouping algorithm, a warning is logged when a retained parent contains a zero-scored ProteinHit in an indistinguishable group that ProteinQuantifier may quantify; the warning reports the score type and does not change the groups. These choices can affect protein grouping, shared-peptide attribution, and downstream interpretation.</p>
+<p>The separate <code>extract_enzyme_rule</code> process reads the digestion enzyme name and cleavage regex from each idXML and passes a JSON rule file alongside it through conversion. The pepXML repair checks the enzyme name, corrects its cleavage specificity, and recalculates <code>num_tol_term</code> for each protein match from its flanking residues. One-residue C-terminal and N-terminal rules are supported; other regexes fail explicitly because the pepXML flanks may not contain enough sequence context. The repair retains the PEP-derived probability in all NTT slots because that score is not separately calibrated by terminus class. Matches with unknown flanks retain their existing NTT and are counted in the process log. OpenMS also writes zero missed cleavages for every hit; this repair does not change that separate field.</p>
               
             </div>
           </div><footer>
