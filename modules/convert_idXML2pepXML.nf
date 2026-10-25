@@ -27,10 +27,10 @@ process convert_idXML2pepXML {
         saveAs: { "log${file(it).name}" }
 
     input:
-        file idxml_file
+        tuple file(idxml_file), file(enzyme_rule_json)
 
     output:
-        file pepxml_file
+        tuple file(pepxml_file), file(enzyme_rule_json)
         file '.command.*'
 
     script:
