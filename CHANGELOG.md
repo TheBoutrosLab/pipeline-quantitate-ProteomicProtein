@@ -1,6 +1,10 @@
 # Changelog
 
-## [Unreleased]
+## [Unreleased] - 2026-10-25
+
+### Fixed
+
+- Pass ProteinQuantifier `-top:include_all` as a standalone flag when enabled.
 
 ## [1.1.0] - 2026-10-25
 
