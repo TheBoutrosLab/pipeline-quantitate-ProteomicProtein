@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased] - 2026-10-25
+## [Unreleased]
+
+## [1.1.1] - 2026-10-25
 
 ### Fixed
 
@@ -28,4 +30,5 @@
 
 [1.0.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/releases/tag/v1.0.0
 [1.1.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.0.0...v1.1.0
-[unreleased]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.0...HEAD
+[1.1.1]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.0...v1.1.1
+[unreleased]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.1...HEAD
