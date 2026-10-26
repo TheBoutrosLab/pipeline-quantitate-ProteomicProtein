@@ -86,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Outputs</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/489b0716489c7071410ca9b8401049c490a89443/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/b1f9d254b5b95c9ea3e8fe54bdaba04fde438915/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -113,11 +113,24 @@
 <td>Peptide abundance table</td>
 </tr>
 <tr>
-<td>Merged or resolved <code>*.consensusXML</code></td>
-<td>Published consensusXML, depending on grouping branch and merge option</td>
+<td><code>&lt;project_name&gt;_ProteinProphet.protXML</code></td>
+<td>ProteinProphet route: raw, unfiltered ProteinProphet grouping result before idXML conversion and probability filtering; always published</td>
+</tr>
+<tr>
+<td><code>&lt;project_name&gt;_ProteinProphet_filtered.idXML</code></td>
+<td>ProteinProphet route: filtered protein groups passed to ProteinQuantifier with <code>-protein_groups</code>; always published, including when <code>save_intermediate_files=false</code></td>
+</tr>
+<tr>
+<td><code>&lt;project_name&gt;_IDConflictResolver.consensusXML</code></td>
+<td>ProteinInferencer route: final consensusXML containing the inferred protein groups after optional protein FDR filtering and conflict resolution</td>
+</tr>
+<tr>
+<td><code>&lt;project_name&gt;_merged.consensusXML</code></td>
+<td>ProteinProphet route: merged input consensusXML, when <code>merge_consensus=true</code></td>
 </tr>
 </tbody>
 </table>
+<p>The raw ProteinProphet protXML is retained for inspection; ProteinQuantifier uses the filtered idXML. The ProteinInferencer route stores its grouping result in the final <code>IDConflictResolver.consensusXML</code>, not a separate idXML. With <code>merge_consensus=false</code>, the ProteinProphet route uses the supplied consensusXML directly and does not publish a merged file.</p>
 <p>Process logs and Nextflow reports are under the sibling timestamped log directory. Optional intermediates are under <code>intermediate/</code>. The pipeline does not currently generate mzTab.</p>
               
             </div>
