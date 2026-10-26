@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased]
+## [Unreleased] - 2026-10-26
+
+### Added
+
+- Publish the filtered ProteinProphet grouping idXML used by ProteinQuantifier in the final output directory on every run, with a stable filename.
+- Publish the unfiltered ProteinProphet protXML in the final output directory on every run.
+- Document the final grouping artifact for both ProteinProphet and ProteinInferencer.
 
 ## [1.1.1] - 2026-10-25
 

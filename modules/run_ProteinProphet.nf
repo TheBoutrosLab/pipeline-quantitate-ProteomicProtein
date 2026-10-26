@@ -21,10 +21,14 @@ FLAG_MAPPER = [
 process run_ProteinProphet {
     container params.docker_image_fragpipe
 
+    publishDir params.final_output_dir,
+        mode: 'copy',
+        pattern: "${params.project_name}_ProteinProphet.protXML"
+
     publishDir "${params.intermediate_file_dir}/${task.process.replace(':', '/')}/",
         mode: 'copy',
         enabled: params.save_intermediate_files,
-        pattern: '*_PeptideProphet.protXML'
+        pattern: "${params.project_name}_ProteinProphet.protXML"
 
     publishDir "${params.process_log_dir}/${task.process.replace(':', '/')}/",
         mode: 'copy',

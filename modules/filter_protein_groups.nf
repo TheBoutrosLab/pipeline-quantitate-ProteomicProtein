@@ -5,6 +5,10 @@ process filter_protein_groups {
     container params.docker_image_pyopenms
     containerOptions "-v ${projectDir}/src/:${projectDir}/src/"
 
+    publishDir params.final_output_dir,
+        mode: 'copy',
+        pattern: "${params.project_name}_ProteinProphet_filtered.idXML"
+
     publishDir "${params.intermediate_file_dir}/${task.process.replace(':', '/')}/",
         mode: 'copy',
         enabled: params.save_intermediate_files,
@@ -23,7 +27,7 @@ process filter_protein_groups {
         file ".command.*"
 
     script:
-    output_idXML = "${input_idXML.baseName}_filtered.idXML"
+    output_idXML = "${params.project_name}_ProteinProphet_filtered.idXML"
     """
     python ${projectDir}/src/FilterProteinGroups.py \\
         --input-path ${input_idXML} \\

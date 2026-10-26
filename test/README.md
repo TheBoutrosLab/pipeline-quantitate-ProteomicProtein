@@ -13,4 +13,6 @@ The four NFTest cases exercise ProteinInferencer and ProteinProphet with LFQ and
 
 The TMT cases set `merge_consensus=false` because each takes one plex. The ProteinProphet inputs must retain decoy hits and use PEP as the active score. The ProteinProphet cases also exercise the lxml pepXML termini repair between IDFileConverter and iProphet. `test/csv_environment_expander.groovy` expands `$TEST_DATA_DIR` in the input CSVs before Nextflow reads them.
 
+Both ProteinProphet cases set `save_intermediate_files=true` to retain intermediate artifacts. The raw `<project_name>_ProteinProphet.protXML` and filtered `<project_name>_ProteinProphet_filtered.idXML` are also published in the final output directory independently of this setting. The filtered idXML is the file passed to ProteinQuantifier.
+
 Run `test/run-nftest.sh <case-name>` inside a Slurm job from the repository root. The launcher uses `/scratch/$SLURM_JOB_ID` for work and sets `NFT_OUTPUT`. Confirm that each fixture path exists under `TEST_DATA_DIR` before running. Integration requires the configured OpenMS, pyOpenMS, and FragPipe containers and initialized shared config submodules.
