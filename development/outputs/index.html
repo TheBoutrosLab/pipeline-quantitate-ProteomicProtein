@@ -86,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Outputs</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/84093eac28aaca8688cc99b6dc29c0a463bc2f75/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/b45f5f09757b816df2d414d89cdd403cfd0c743e/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -106,7 +106,7 @@
 <tbody>
 <tr>
 <td><code>&lt;project_name&gt;_ProteinQuantifier_protein.csv</code></td>
-<td>Protein abundance table</td>
+<td>Sample-level protein abundance table with explicit sample or plex/channel headers</td>
 </tr>
 <tr>
 <td><code>&lt;project_name&gt;_ProteinQuantifier_peptide.csv</code></td>
@@ -124,13 +124,9 @@
 <td><code>&lt;project_name&gt;_IDConflictResolver.consensusXML</code></td>
 <td>ProteinInferencer route: final consensusXML containing the inferred protein groups after optional protein FDR filtering and conflict resolution</td>
 </tr>
-<tr>
-<td><code>&lt;project_name&gt;_merged.consensusXML</code></td>
-<td>ProteinProphet route: merged input consensusXML, when <code>merge_consensus=true</code></td>
-</tr>
 </tbody>
 </table>
-<p>The raw ProteinProphet protXML is retained for inspection; ProteinQuantifier uses the filtered idXML. The ProteinInferencer route stores its grouping result in the final <code>IDConflictResolver.consensusXML</code>, not a separate idXML. With <code>merge_consensus=false</code>, the ProteinProphet route uses the supplied consensusXML directly and does not publish a merged file.</p>
+<p>The raw ProteinProphet protXML is retained for inspection; ProteinQuantifier uses the filtered idXML. The ProteinInferencer route stores its grouping result in the final <code>IDConflictResolver.consensusXML</code>, not a separate idXML. The ProteinProphet route quantifies the supplied cohort consensusXML directly.</p>
 <p>Process logs and Nextflow reports are under the sibling timestamped log directory. Optional intermediates are under <code>intermediate/</code>. The pipeline does not currently generate mzTab.</p>
               
             </div>

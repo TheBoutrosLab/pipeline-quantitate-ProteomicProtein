@@ -8,11 +8,11 @@
         </g>
         <rect x="35" y="88" width="1330" height="193" style="fill:rgb(240,253,244);stroke:rgb(134,239,172);stroke-width:1.5px;"/>
         <g transform="matrix(1,0,0,1,60,120)">
-            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Goruping Opt<tspan x="170.275px 174.454px " y="0px 0px ">io</tspan>n 1: OpenMS ProteinInferencer</text>
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Grouping Option 1: OpenMS ProteinInferencer</text>
         </g>
         <rect x="60" y="171" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
         <g transform="matrix(1,0,0,1,155,199)">
-            <text x="-68.507px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML<tspan x="33.497px 37.665px " y="0px 0px "> C</tspan>SV</text>
+            <text x="-59px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML</text>
         </g>
         <g transform="matrix(1,0,0,1,155,222)">
             <g transform="matrix(12,0,0,12,-15.342773,0)">
@@ -25,17 +25,7 @@
             <path d="M254,134.5L263,139L254,143.5L254,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
             <path d="M235,139L255.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
         </g>
-        <rect x="280" y="171" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
-        <g transform="matrix(1,0,0,1,375,199)">
-            <text x="-35.841px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">FileMerger</text>
-        </g>
-        <g transform="matrix(1,0,0,1,375,222)">
-            <text x="-41.021px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Optional merge</text>
-        </g>
-        <g transform="matrix(1,-0,-0,1,15,70)">
-            <path d="M474,134.5L483,139L474,143.5L474,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
-            <path d="M455,139L475.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
-        </g>
+        <g transform="translate(-220,0)">
         <rect x="500" y="171" width="190" height="76" style="fill:rgb(220,252,231);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
         <g transform="matrix(1,0,0,1,595,199)">
             <text x="-55.034px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinInference</text>
@@ -82,15 +72,21 @@
             <text x="-56.279px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinQuantiﬁer</text>
         </g>
         <g transform="matrix(1,0,0,1,1250,222)">
-            <text x="-62.537px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Protein + peptide CSVs</text>
+            <text x="-67px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Protein + peptide CSVs</text>
         </g>
+        </g>
+        <path d="M1134,204.5L1143,209L1134,213.5L1134,204.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+        <path d="M1115,209L1135.8,209" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        <rect x="1160" y="171" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <text x="1250" y="199" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader protein CSV</text>
+        <text x="1250" y="222" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">MapList sample labels</text>
         <rect x="35" y="307" width="1330" height="350" style="fill:rgb(255,251,235);stroke:rgb(252,211,77);stroke-width:1.5px;"/>
         <g transform="matrix(1,0,0,1,60,339)">
-            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Goruping Option 2: ProteinProphet</text>
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Grouping Option 2: ProteinProphet</text>
         </g>
         <rect x="60" y="391" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
         <g transform="matrix(1,0,0,1,155,419)">
-            <text x="-68.507px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML<tspan x="33.497px 37.665px " y="0px 0px "> C</tspan>SV</text>
+            <text x="-59px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML</text>
         </g>
         <g transform="matrix(1,0,0,1,155,442)">
             <g transform="matrix(12,0,0,12,-15.342773,0)">
@@ -100,34 +96,28 @@
             <text x="-50.698px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Quantiﬁed features</text>
         </g>
         <g transform="matrix(1,-0,-0,1,15,70)">
-            <path d="M254,354.5L263,359L254,363.5L254,354.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
-            <path d="M235,359L255.8,359" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+            <path d="M914,354.5L923,359L914,363.5L914,354.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M235,359L915.8,359" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
         </g>
-        <rect x="280" y="391" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
-        <g transform="matrix(1,0,0,1,375,419)">
-            <text x="-35.841px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">FileMerger</text>
+        <g transform="matrix(1,0,0,1,595,418)">
+            <text x="-79px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Cohort consensusXML</text>
         </g>
-        <g transform="matrix(1,0,0,1,375,442)">
-            <text x="-41.021px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Optional merge</text>
-        </g>
-        <g transform="matrix(1,-0,-0,1,15,70)">
-            <path d="M1134,354.5L1143,359L1134,363.5L1134,354.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
-            <path d="M455,359L1135.8,359" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,810,418)">
-            <text x="-41.021px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">consensusXML</text>
-        </g>
-        <rect x="1160" y="391" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
-        <g transform="matrix(1,0,0,1,1250,419)">
+        <rect x="940" y="391" width="190" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,1035,419)">
             <g transform="matrix(15,0,0,15,35.441895,0)">
             </g>
             <g transform="matrix(15,0,0,15,39.609375,0)">
             </g>
             <text x="-56.279px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinQuantiﬁer</text>
         </g>
-        <g transform="matrix(1,0,0,1,1250,442)">
+        <g transform="matrix(1,0,0,1,1035,442)">
             <text x="-62.537px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Protein + peptide CSVs</text>
         </g>
+        <path d="M1134,424.5L1143,429L1134,433.5L1134,424.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+        <path d="M1115,429L1135.8,429" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        <rect x="1160" y="391" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <text x="1250" y="419" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader protein CSV</text>
+        <text x="1250" y="442" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">MapList sample labels</text>
         <rect x="60" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
         <g transform="matrix(1,0,0,1,155,558)">
             <g transform="matrix(15,0,0,15,-54.741211,0)">
@@ -197,10 +187,10 @@
             <text x="-55.758px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">remove P<tspan x="-4.617px -1.283px " y="0px 0px "> =</tspan> 0 groups</text>
         </g>
         <g transform="matrix(1,-0,-0,1,15,70)">
-            <path d="M1230.5,408L1235,399L1239.5,408L1230.5,408Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
-            <path d="M1115,505L1235,505L1235,406.2" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+            <path d="M1015.5,404L1020,395L1024.5,404L1015.5,404Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M1020,464L1020,402.2" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
         </g>
-        <g transform="matrix(1,0,0,1,1170,597)">
+        <g transform="matrix(1,0,0,1,1050,498)">
             <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">protein groups</text>
         </g>
     </g>

@@ -86,7 +86,7 @@
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
       <li class="breadcrumb-item active">Workflows</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/84093eac28aaca8688cc99b6dc29c0a463bc2f75/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/blob/b45f5f09757b816df2d414d89cdd403cfd0c743e/README.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -96,11 +96,12 @@
               
                 <h2 id="workflows">Workflows</h2>
 <p><img alt="Protein quantification workflow" src="../pipeline-flow.svg" /></p>
+<p>ProteinQuantifier writes sample-level protein abundances, combining fractions assigned to the same sample. A postprocessing step replaces its numbered protein abundance headers with the sample or plex and reporter channel identified by the quantified consensusXML. It changes only the header; protein abundance values remain exactly as OpenMS wrote them. The step stops if the consensusXML cannot identify every protein column unambiguously.</p>
 <ul>
-<li><strong>ProteinProphet (default):</strong> Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.</li>
-<li><strong>ProteinInferencer:</strong> Optionally merge consensusXML files, run OpenMS ProteinInference, optionally filter by protein FDR when both <code>protein_inference_protein_fdr</code> and <code>filter_protein_fdr</code> are true, then resolve identification conflicts and quantify.</li>
+<li><strong>ProteinProphet (default):</strong> For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.</li>
+<li><strong>ProteinInferencer:</strong> Run OpenMS ProteinInference on the cohort consensusXML, optionally filter by protein FDR when both <code>protein_inference_protein_fdr</code> and <code>filter_protein_fdr</code> are true, then resolve identification conflicts and quantify.</li>
 </ul>
-<p>The pipeline does not impose LFQ sample grouping or TMT plex logic. Input consensusXML files must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.</p>
+<p>The pipeline does not impose LFQ sample grouping or TMT plex logic. The input consensusXML must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.</p>
               
             </div>
           </div><footer>
