@@ -7,6 +7,10 @@
 - Label sample-level ProteinQuantifier protein abundance columns from the quantified consensusXML without changing abundance values.
 - Accept one cohort-level consensusXML path directly and remove the consensusXML CSV and merge setting.
 
+### Fixed
+
+- Configure the repository's Python linter to ignore complexity limits and document the protein reheader CLI entry point (2026-11-09).
+
 ## [1.1.2] - 2026-10-26
 
 ### Added

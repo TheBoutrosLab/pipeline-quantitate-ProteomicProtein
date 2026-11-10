@@ -167,6 +167,7 @@ class ProteinQuantCSVReheader:
 
 
 def main():
+    """Parse command-line inputs and write the renamed protein table."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input-csv', required=True)
     parser.add_argument('--consensus-xml', required=True)
