@@ -11,7 +11,7 @@ input_consensusXML:
   type: Path
   mode: r
   required: true
-  help: CSV with a path column of consensusXML files.
+  help: One cohort-level consensusXML file for protein quantification.
 unfiltered_idXML:
   type: Path
   mode: r
@@ -30,10 +30,6 @@ protein_grouping_algorithm:
   type: String
   required: false
   help: ProteinProphet or ProteinInferencer.
-merge_consensus:
-  type: Bool
-  required: false
-  help: Merge input consensusXML files before inference and quantification.
 filter_protein_fdr:
   type: Bool
   required: false

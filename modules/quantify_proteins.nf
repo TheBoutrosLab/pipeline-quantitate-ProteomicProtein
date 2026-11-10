@@ -27,7 +27,12 @@ process quantify_proteins {
 
     publishDir params.final_output_dir,
         mode: 'copy',
-        pattern: "*.{csv}"
+        pattern: "*_ProteinQuantifier_peptide.csv"
+
+    publishDir "${params.intermediate_file_dir}/${task.process.replace(':', '/')}/",
+        mode: 'copy',
+        enabled: params.save_intermediate_files,
+        pattern: "*_ProteinQuantifier_protein_raw.csv"
 
     publishDir "${params.process_log_dir}/${task.process.replace(':', '/')}-${task.index}/",
         mode: 'copy',
@@ -39,12 +44,12 @@ process quantify_proteins {
         file protein_groups
 
     output:
-        file protein_out
+        tuple file(protein_out), file(consensusXML)
         file peptide_out
         file ".command.*"
 
     script:
-    protein_out = "${params.project_name}_ProteinQuantifier_protein.csv"
+    protein_out = "${params.project_name}_ProteinQuantifier_protein_raw.csv"
     peptide_out = "${params.project_name}_ProteinQuantifier_peptide.csv"
     extra_args = getOpenMSArgs(PARAMETERS, FLAGS, PARAMETER_MAPPER, FLAG_MAPPER)
     if (protein_groups.name != 'NO_FILE') {

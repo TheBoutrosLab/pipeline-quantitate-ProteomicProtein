@@ -1,10 +1,10 @@
 nextflow.enable.dsl = 2
 
-include { merge_consensusXML } from "${projectDir}/modules/merge_consensusXML"
 include { infer_proteins } from "${projectDir}/modules/infer_proteins"
 include { filter_proteins } from "${projectDir}/modules/filter_proteins"
 include { resolve_conflict } from "${projectDir}/modules/resolve_conflict"
 include { quantify_proteins } from "${projectDir}/modules/quantify_proteins"
+include { reheader_ProteinQuantCSV } from "${projectDir}/modules/reheader_ProteinQuantCSV"
 include { set_databasePath } from "${projectDir}/modules/set_databasePath"
 include { extract_enzyme_rule } from "${projectDir}/modules/extract_enzyme_rule"
 include { run_iProphet } from "${projectDir}/modules/run_iProphet"
@@ -19,16 +19,7 @@ include { print_prelogue } from "${projectDir}/modules/common"
 print_prelogue()
 
 workflow {
-    ich_consensusXML = Channel.fromPath(params.input_consensusXML)
-        .splitCsv(header:true)
-        .map { file(it.path) }
-
-    if (params.merge_consensus == true) {
-        merge_consensusXML(ich_consensusXML.collect())
-        consensusXML = merge_consensusXML.out[0]
-    } else {
-        consensusXML = ich_consensusXML
-    }
+    consensusXML = file(params.input_consensusXML)
 
     if (params.protein_grouping_algorithm == 'ProteinProphet') {
         ich_unfiltered_idXML = Channel.fromPath(params.unfiltered_idXML)
@@ -63,4 +54,5 @@ workflow {
         protein_groups = file("${projectDir}/input/NO_FILE")
     }
     quantify_proteins(final_consensusXML, protein_groups)
+    reheader_ProteinQuantCSV(quantify_proteins.out[0])
 }

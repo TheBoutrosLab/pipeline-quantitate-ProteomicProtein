@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Label sample-level ProteinQuantifier protein abundance columns from the quantified consensusXML without changing abundance values.
+- Accept one cohort-level consensusXML path directly and remove the consensusXML CSV and merge setting.
+
 ## [1.1.2] - 2026-10-26
 
 ### Added

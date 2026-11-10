@@ -1,21 +1,23 @@
 # quantitate-ProteomicProtein
 
-Quantitate proteins and peptides across compatible consensusXML inputs with OpenMS ProteinQuantifier. The pipeline retains two protein grouping workflows.
+Quantitate proteins and peptides from one cohort-level consensusXML with OpenMS ProteinQuantifier. The pipeline retains two protein grouping workflows.
 
 ## Workflows
 
 ![Protein quantification workflow](docs/pipeline-flow.svg)
 
-- **ProteinProphet (default):** Optionally merge the input consensusXML files. For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
-- **ProteinInferencer:** Optionally merge consensusXML files, run OpenMS ProteinInference, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
+ProteinQuantifier writes sample-level protein abundances, combining fractions assigned to the same sample. A postprocessing step replaces its numbered protein abundance headers with the sample or plex and reporter channel identified by the quantified consensusXML. It changes only the header; protein abundance values remain exactly as OpenMS wrote them. The step stops if the consensusXML cannot identify every protein column unambiguously.
 
-The pipeline does not impose LFQ sample grouping or TMT plex logic. Input consensusXML files must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.
+- **ProteinProphet (default):** For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
+- **ProteinInferencer:** Run OpenMS ProteinInference on the cohort consensusXML, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
+
+The pipeline does not impose LFQ sample grouping or TMT plex logic. The input consensusXML must already contain compatible quantified features and sample metadata. ProteinProphet combines all provided unfiltered idXML files for cohort level grouping.
 
 ## Inputs
 
-Create a CSV with a single `path` column for `input_consensusXML`. For ProteinProphet, create another `path` CSV for `unfiltered_idXML` and provide the matching target-decoy FASTA and decoy prefix. See [example CSV](input/input.csv) and [configuration template](config/template.config).
+Set `input_consensusXML` to the path of one cohort-level `.consensusXML` file. For ProteinProphet, create a `path` CSV for `unfiltered_idXML` and provide the matching target-decoy FASTA and decoy prefix. See the [configuration template](config/template.config).
 
-Key parameters: `output_dir`, `project_name`, `input_consensusXML`, `protein_grouping_algorithm` (`ProteinProphet` or `ProteinInferencer`), `merge_consensus`, `save_intermediate_files`, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports `protein_inference_protein_fdr` and `filter_protein_fdr`. When filtering is enabled, set both switches to `true` and supply `protein_fdr_cutoff` (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.
+Key parameters: `output_dir`, `project_name`, `input_consensusXML`, `protein_grouping_algorithm` (`ProteinProphet` or `ProteinInferencer`), `save_intermediate_files`, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports `protein_inference_protein_fdr` and `filter_protein_fdr`. When filtering is enabled, set both switches to `true` and supply `protein_fdr_cutoff` (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.
 
 Use `nextflow run main.nf -c /path/to/run.config -profile standard`. The `docker`, `apptainer`, `singularity`, and `local` profiles are also available. The shared configuration submodule must be initialized. The pepXML repair uses `lxml` in the configured FragPipe image. The iProphet and ProteinProphet steps use the Philosopher executable bundled in `fcyucn/fragpipe:24.0`. Resource allocations come from [resources.json](config/resources.json) and can be adjusted with `resource_allocation_profile_tag` and `base_resource_update`.
 
@@ -25,20 +27,19 @@ Under `<output_dir>/quantitate-ProteomicProtein-<version>/<project_name>/OpenMS-
 
 | File | Contents |
 | --- | --- |
-| `<project_name>_ProteinQuantifier_protein.csv` | Protein abundance table |
+| `<project_name>_ProteinQuantifier_protein.csv` | Sample-level protein abundance table with explicit sample or plex/channel headers |
 | `<project_name>_ProteinQuantifier_peptide.csv` | Peptide abundance table |
 | `<project_name>_ProteinProphet.protXML` | ProteinProphet route: raw, unfiltered ProteinProphet grouping result before idXML conversion and probability filtering; always published |
 | `<project_name>_ProteinProphet_filtered.idXML` | ProteinProphet route: filtered protein groups passed to ProteinQuantifier with `-protein_groups`; always published, including when `save_intermediate_files=false` |
 | `<project_name>_IDConflictResolver.consensusXML` | ProteinInferencer route: final consensusXML containing the inferred protein groups after optional protein FDR filtering and conflict resolution |
-| `<project_name>_merged.consensusXML` | ProteinProphet route: merged input consensusXML, when `merge_consensus=true` |
 
-The raw ProteinProphet protXML is retained for inspection; ProteinQuantifier uses the filtered idXML. The ProteinInferencer route stores its grouping result in the final `IDConflictResolver.consensusXML`, not a separate idXML. With `merge_consensus=false`, the ProteinProphet route uses the supplied consensusXML directly and does not publish a merged file.
+The raw ProteinProphet protXML is retained for inspection; ProteinQuantifier uses the filtered idXML. The ProteinInferencer route stores its grouping result in the final `IDConflictResolver.consensusXML`, not a separate idXML. The ProteinProphet route quantifies the supplied cohort consensusXML directly.
 
 Process logs and Nextflow reports are under the sibling timestamped log directory. Optional intermediates are under `intermediate/`. The pipeline does not currently generate mzTab.
 
 ## Testing
 
-See [test/README.md](test/README.md) and [`.env-template`](.env-template) for the two NFTest integration cases and required environment variables. They require external fixtures and containers on the cluster.
+See [test/README.md](test/README.md) and [`.env-template`](.env-template) for the four NFTest integration cases and required environment variables. They require external fixtures and containers on the cluster.
 
 ## Scientific review points
 

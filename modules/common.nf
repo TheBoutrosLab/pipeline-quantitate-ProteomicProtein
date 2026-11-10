@@ -46,7 +46,8 @@ def print_prelogue(){
     exclude_args = [
         'input_consensusXML', 'output_dir', 'openms_version', 'docker_image_openms',
         'max_cpus', 'max_memory', 'fragpipe_version', 'docker_image_fragpipe',
-        'intermediate_file_dir', 'process_log_dir', 'pipeline_log_dir'
+        'intermediate_file_dir', 'process_log_dir', 'pipeline_log_dir',
+        'project_script_mount_options'
     ]
     params.each { key, val ->
         if (!(key in exclude_args)) {
@@ -72,7 +73,7 @@ def print_prelogue(){
 
         - input:
             input_consensusXML: ${params.input_consensusXML}
-            unfiltered_idXML : ${params.unfiltered_idXML}
+            unfiltered_idXML : ${params.containsKey('unfiltered_idXML') ? params.unfiltered_idXML : 'not set'}
 
         - output:
             output_dir: ${params.output_dir}
