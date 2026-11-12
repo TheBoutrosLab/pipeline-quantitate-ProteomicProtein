@@ -78,8 +78,8 @@
         <path d="M1134,204.5L1143,209L1134,213.5L1134,204.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
         <path d="M1115,209L1135.8,209" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
         <rect x="1160" y="171" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
-        <text x="1250" y="199" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader protein CSV</text>
-        <text x="1250" y="222" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">MapList sample labels</text>
+        <text x="1250" y="199" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader both CSVs</text>
+        <text x="1250" y="222" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Assay/channel labels</text>
         <rect x="35" y="307" width="1330" height="350" style="fill:rgb(255,251,235);stroke:rgb(252,211,77);stroke-width:1.5px;"/>
         <g transform="matrix(1,0,0,1,60,339)">
             <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Grouping Option 2: ProteinProphet</text>
@@ -116,8 +116,8 @@
         <path d="M1134,424.5L1143,429L1134,433.5L1134,424.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
         <path d="M1115,429L1135.8,429" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
         <rect x="1160" y="391" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
-        <text x="1250" y="419" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader protein CSV</text>
-        <text x="1250" y="442" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">MapList sample labels</text>
+        <text x="1250" y="419" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader both CSVs</text>
+        <text x="1250" y="442" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Assay/channel labels</text>
         <rect x="60" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
         <g transform="matrix(1,0,0,1,155,558)">
             <g transform="matrix(15,0,0,15,-54.741211,0)">

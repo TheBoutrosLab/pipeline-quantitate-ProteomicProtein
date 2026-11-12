@@ -6,7 +6,7 @@ Quantitate proteins and peptides from one cohort-level consensusXML with OpenMS 
 
 ![Protein quantification workflow](docs/pipeline-flow.svg)
 
-ProteinQuantifier writes sample-level protein abundances, combining fractions assigned to the same sample. A postprocessing step replaces its numbered protein abundance headers with the sample or plex and reporter channel identified by the quantified consensusXML. It changes only the header; protein abundance values remain exactly as OpenMS wrote them. The step stops if the consensusXML cannot identify every protein column unambiguously.
+OpenMS 3.6 ProteinQuantifier writes one protein abundance per `(fraction_group, label)` assay. Each assay combines its fractions with `protein_quantifier_fractions_aggregate = 'sum'` by default; technical replicates in separate fraction groups remain separate columns. Postprocessing reads the same OpenMS experimental design and labels protein and peptide abundance columns with their file identity, explicit sample name, or fraction-group ID, reporter channel, and optional channel description. It changes only headers and fails if an assay cannot be matched to the consensusXML.
 
 - **ProteinProphet (default):** For each unfiltered, PEP-scored idXML, set its search database path to the supplied target-decoy FASTA, extract its OpenMS enzyme rule, convert it to pepXML, and repair the enzyme-terminus annotations. Combine the repaired pepXML files with iProphet; run ProteinProphet; convert protXML to idXML; remove groups whose probability is zero; and give the resulting groups to ProteinQuantifier.
 - **ProteinInferencer:** Run OpenMS ProteinInference on the cohort consensusXML, optionally filter by protein FDR when both `protein_inference_protein_fdr` and `filter_protein_fdr` are true, then resolve identification conflicts and quantify.
@@ -19,6 +19,8 @@ Set `input_consensusXML` to the path of one cohort-level `.consensusXML` file. F
 
 Key parameters: `output_dir`, `project_name`, `input_consensusXML`, `protein_grouping_algorithm` (`ProteinProphet` or `ProteinInferencer`), `save_intermediate_files`, and the ProteinProphet inputs listed above. The ProteinInferencer branch supports `protein_inference_protein_fdr` and `filter_protein_fdr`. When filtering is enabled, set both switches to `true` and supply `protein_fdr_cutoff` (a protein q-value from 0 inclusive to 1 exclusive); no cutoff is chosen by default. Tool options retain their original parameter names in the modules.
 
+ProteinQuantifier uses OpenMS 3.6. Set `protein_quantifier_best_charge = true` to select one charge globally per modified peptide; the default `false` combines charge states. `protein_quantifier_fractions_aggregate = 'sum'` adds fractions within each assay; choose `'best'` to keep one fraction per peptide and fraction group. The removed `protein_quantifier_best_charge_and_fraction` and `protein_quantifier_ratios` settings are rejected. With `best_charge`, the detailed peptide CSV contains rows per fraction and charge and abundance columns per file and channel; the reheader appends available channel descriptions to those columns. Both reheader processes preserve data rows.
+
 Use `nextflow run main.nf -c /path/to/run.config -profile standard`. The `docker`, `apptainer`, `singularity`, and `local` profiles are also available. The shared configuration submodule must be initialized. The pepXML repair uses `lxml` in the configured FragPipe image. The iProphet and ProteinProphet steps use the Philosopher executable bundled in `fcyucn/fragpipe:24.0`. Resource allocations come from [resources.json](config/resources.json) and can be adjusted with `resource_allocation_profile_tag` and `base_resource_update`.
 
 ## Outputs
@@ -27,8 +29,8 @@ Under `<output_dir>/quantitate-ProteomicProtein-<version>/<project_name>/OpenMS-
 
 | File | Contents |
 | --- | --- |
-| `<project_name>_ProteinQuantifier_protein.csv` | Sample-level protein abundance table with explicit sample or plex/channel headers |
-| `<project_name>_ProteinQuantifier_peptide.csv` | Peptide abundance table |
+| `<project_name>_ProteinQuantifier_protein.csv` | Assay-level protein abundance table with file, sample, or fraction-group identity, channel, and optional channel description headers |
+| `<project_name>_ProteinQuantifier_peptide.csv` | Peptide abundance table with readable assay or file/channel headers; layout depends on `protein_quantifier_best_charge` |
 | `<project_name>_ProteinProphet.protXML` | ProteinProphet route: raw, unfiltered ProteinProphet grouping result before idXML conversion and probability filtering; always published |
 | `<project_name>_ProteinProphet_filtered.idXML` | ProteinProphet route: filtered protein groups passed to ProteinQuantifier with `-protein_groups`; always published, including when `save_intermediate_files=false` |
 | `<project_name>_IDConflictResolver.consensusXML` | ProteinInferencer route: final consensusXML containing the inferred protein groups after optional protein FDR filtering and conflict resolution |

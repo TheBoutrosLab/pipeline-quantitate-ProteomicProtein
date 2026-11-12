@@ -1,4 +1,4 @@
-/** Label sample-level protein abundances using the quantified consensusXML. */
+/** Label OpenMS 3.6 protein assay abundances using the quantified consensusXML. */
 process reheader_ProteinQuantCSV {
     container params.docker_image_pyopenms
     containerOptions params.project_script_mount_options
