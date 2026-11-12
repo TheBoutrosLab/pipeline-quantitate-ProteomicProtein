@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1372 609" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g id="Artboard1" transform="matrix(1,0,0,1,-15,-70)">
+        <rect x="15" y="70" width="1372" height="609" style="fill:none;"/>
+        <g transform="matrix(0.98,0,0,0.882609,15,70)">
+            <rect x="0" y="0" width="1400" height="690" style="fill:rgb(248,250,252);"/>
+        </g>
+        <rect x="35" y="88" width="1330" height="193" style="fill:rgb(240,253,244);stroke:rgb(134,239,172);stroke-width:1.5px;"/>
+        <g transform="matrix(1,0,0,1,60,120)">
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Grouping Option 1: OpenMS ProteinInferencer</text>
+        </g>
+        <rect x="60" y="171" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,155,199)">
+            <text x="-59px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML</text>
+        </g>
+        <g transform="matrix(1,0,0,1,155,222)">
+            <g transform="matrix(12,0,0,12,-15.342773,0)">
+            </g>
+            <g transform="matrix(12,0,0,12,-12.008789,0)">
+            </g>
+            <text x="-50.698px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Quantiﬁed features</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M254,134.5L263,139L254,143.5L254,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M235,139L255.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <g transform="translate(-220,0)">
+        <rect x="500" y="171" width="190" height="76" style="fill:rgb(220,252,231);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,595,199)">
+            <text x="-55.034px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinInference</text>
+        </g>
+        <g transform="matrix(1,0,0,1,595,222)">
+            <text x="-46.025px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">ProteinInferencer</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M694,134.5L703,139L694,143.5L694,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M675,139L695.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="720" y="171" width="190" height="76" style="fill:rgb(220,252,231);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,815,199)">
+            <text x="-24.166px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">IDFilter</text>
+        </g>
+        <g transform="matrix(1,0,0,1,815,222)">
+            <text x="-56.358px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Optional protein FDR</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M914,134.5L923,139L914,143.5L914,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M895,139L915.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="940" y="171" width="190" height="76" style="fill:rgb(220,252,231);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,1035,199)">
+            <g transform="matrix(15,0,0,15,-19.584961,0)">
+            </g>
+            <g transform="matrix(15,0,0,15,-15.41748,0)">
+            </g>
+            <text x="-62.102px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">IDConﬂictResolver</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1035,222)">
+            <text x="-67.702px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Resolved consensusXML</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M1134,134.5L1143,139L1134,143.5L1134,134.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M1115,139L1135.8,139" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="1160" y="171" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,1250,199)">
+            <g transform="matrix(15,0,0,15,35.441895,0)">
+            </g>
+            <g transform="matrix(15,0,0,15,39.609375,0)">
+            </g>
+            <text x="-56.279px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinQuantiﬁer</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1250,222)">
+            <text x="-67px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Protein + peptide CSVs</text>
+        </g>
+        </g>
+        <path d="M1134,204.5L1143,209L1134,213.5L1134,204.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+        <path d="M1115,209L1135.8,209" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        <rect x="1160" y="171" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <text x="1250" y="199" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader both CSVs</text>
+        <text x="1250" y="222" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Assay/channel labels</text>
+        <rect x="35" y="307" width="1330" height="350" style="fill:rgb(255,251,235);stroke:rgb(252,211,77);stroke-width:1.5px;"/>
+        <g transform="matrix(1,0,0,1,60,339)">
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18px;fill:rgb(15,23,42);">Protein Grouping Option 2: ProteinProphet</text>
+        </g>
+        <rect x="60" y="391" width="190" height="76" style="fill:rgb(219,234,254);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,155,419)">
+            <text x="-59px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">consensusXML</text>
+        </g>
+        <g transform="matrix(1,0,0,1,155,442)">
+            <g transform="matrix(12,0,0,12,-15.342773,0)">
+            </g>
+            <g transform="matrix(12,0,0,12,-12.008789,0)">
+            </g>
+            <text x="-50.698px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Quantiﬁed features</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M914,354.5L923,359L914,363.5L914,354.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M235,359L915.8,359" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,595,418)">
+            <text x="-79px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Cohort consensusXML</text>
+        </g>
+        <rect x="940" y="391" width="190" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,1035,419)">
+            <g transform="matrix(15,0,0,15,35.441895,0)">
+            </g>
+            <g transform="matrix(15,0,0,15,39.609375,0)">
+            </g>
+            <text x="-56.279px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinQuantiﬁer</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1035,442)">
+            <text x="-62.537px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Protein + peptide CSVs</text>
+        </g>
+        <path d="M1134,424.5L1143,429L1134,433.5L1134,424.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+        <path d="M1115,429L1135.8,429" style="fill:none;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        <rect x="1160" y="391" width="180" height="76" style="fill:rgb(233,213,255);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <text x="1250" y="419" text-anchor="middle" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Reheader both CSVs</text>
+        <text x="1250" y="442" text-anchor="middle" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Assay/channel labels</text>
+        <rect x="60" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,155,558)">
+            <g transform="matrix(15,0,0,15,-54.741211,0)">
+            </g>
+            <g transform="matrix(15,0,0,15,-50.57373,0)">
+            </g>
+            <text x="-71.426px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">unﬁltered idXML<tspan x="36.416px 40.583px " y="0px 0px "> C</tspan>SV</text>
+        </g>
+        <g transform="matrix(1,0,0,1,155,580)">
+            <text x="-53.584px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">PEP<tspan x="-29.783px -26.449px " y="0px 0px "> s</tspan>cores, decoys</text>
+        </g>
+        <g transform="matrix(1,0,0,1,155,599)">
+            <text x="-58.755px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">+ target-decoy F<tspan x="28.298px 36.302px 44.306px 50.751px " y="0px 0px 0px 0px ">ASTA</tspan></text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M254,500.5L263,505L254,509.5L254,500.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M235,505L255.8,505" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="280" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,375,558)">
+            <text x="-56.7px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Prepare pepXML</text>
+        </g>
+        <g transform="matrix(1,0,0,1,375,580)">
+            <text x="-50.373px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Set database path;</text>
+        </g>
+        <g transform="matrix(1,0,0,1,375,599)">
+            <text x="-42.012px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">IDFileConverter</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M474,500.5L483,505L474,509.5L474,500.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M455,505L475.8,505" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="500" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,595,558)">
+            <text x="-27.935px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">iProphet</text>
+        </g>
+        <g transform="matrix(1,0,0,1,595,584)">
+            <g transform="matrix(12,0,0,12,38.803711,0)">
+            </g>
+            <g transform="matrix(12,0,0,12,42.137695,0)">
+            </g>
+            <text x="-60.144px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Combine pepXML<tspan x="35.47px 38.804px " y="0px 0px "> ﬁ</tspan>les</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M694,500.5L703,505L694,509.5L694,500.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M675,505L695.8,505" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="720" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,815,558)">
+            <text x="-50.032px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">ProteinProphet</text>
+        </g>
+        <g transform="matrix(1,0,0,1,815,584)">
+            <text x="-52.031px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Infer protein groups</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M914,500.5L923,505L914,509.5L914,500.5Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M895,505L915.8,505" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <rect x="940" y="534" width="190" height="82" style="fill:rgb(254,243,199);stroke:rgb(148,163,184);stroke-width:1.2px;"/>
+        <g transform="matrix(1,0,0,1,1035,558)">
+            <text x="-51.698px" y="0px" style="font-family:'Helvetica';font-size:15px;fill:rgb(15,23,42);">Prepare groups</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1035,580)">
+            <text x="-72.144px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">Convert protXML<tspan x="18.12px 21.454px " y="0px 0px "> t</tspan>o idXML;</text>
+        </g>
+        <g transform="matrix(1,0,0,1,1035,599)">
+            <text x="-55.758px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">remove P<tspan x="-4.617px -1.283px " y="0px 0px "> =</tspan> 0 groups</text>
+        </g>
+        <g transform="matrix(1,-0,-0,1,15,70)">
+            <path d="M1015.5,404L1020,395L1024.5,404L1015.5,404Z" style="fill:rgb(71,85,105);fill-rule:nonzero;"/>
+            <path d="M1020,464L1020,402.2" style="fill:none;fill-rule:nonzero;stroke:rgb(71,85,105);stroke-width:2px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,1050,498)">
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12px;fill:rgb(71,85,105);">protein groups</text>
+        </g>
+    </g>
+</svg>
