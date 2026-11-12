@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-11
+
 ### Changed
 
 - Upgrade OpenMS and pyOpenMS defaults to 3.6.0, use its `best_charge` flag and explicit fraction aggregation, and reject removed ProteinQuantifier settings (2026-11-11).
@@ -58,4 +60,5 @@
 [1.1.1]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.0...v1.1.1
 [1.1.2]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.1...v1.1.2
 [1.2.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.1.2...v1.2.0
-[unreleased]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.2.0...HEAD
+[1.3.0]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.2.0...v1.3.0
+[unreleased]: https://github.com/TheBoutrosLab/pipeline-quantitate-ProteomicProtein/compare/v1.3.0...HEAD
