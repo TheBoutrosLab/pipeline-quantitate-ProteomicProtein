@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Upgrade OpenMS and pyOpenMS defaults to 3.6.0, use its `best_charge` flag and explicit fraction aggregation, and reject removed ProteinQuantifier settings (2026-11-11).
+- Map assay-level protein abundance headers by fraction group and label so fractions and technical replicates keep their OpenMS 3.6 meaning (2026-11-11).
+- Apply the same readable assay headers to peptide abundances and annotate detailed peptide file/channel headers when descriptions are present (2026-11-11).
+
 ## [1.2.0] - 2026-11-09
 
 ### Added

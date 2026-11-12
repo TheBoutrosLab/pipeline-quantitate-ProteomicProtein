@@ -42,6 +42,14 @@ protein_inference_protein_fdr:
   type: Bool
   required: false
   help: Calculate protein level FDR in ProteinInference.
+protein_quantifier_best_charge:
+  type: Bool
+  required: false
+  help: Select one charge globally per modified peptide when quantifying proteins.
+protein_quantifier_fractions_aggregate:
+  type: String
+  required: false
+  help: Combine fractions within each assay using sum or best; defaults to sum.
 save_intermediate_files:
   type: Bool
   required: false

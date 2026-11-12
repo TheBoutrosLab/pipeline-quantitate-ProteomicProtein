@@ -5,6 +5,7 @@ include { filter_proteins } from "${projectDir}/modules/filter_proteins"
 include { resolve_conflict } from "${projectDir}/modules/resolve_conflict"
 include { quantify_proteins } from "${projectDir}/modules/quantify_proteins"
 include { reheader_ProteinQuantCSV } from "${projectDir}/modules/reheader_ProteinQuantCSV"
+include { reheader_PeptideQuantCSV } from "${projectDir}/modules/reheader_PeptideQuantCSV"
 include { set_databasePath } from "${projectDir}/modules/set_databasePath"
 include { extract_enzyme_rule } from "${projectDir}/modules/extract_enzyme_rule"
 include { run_iProphet } from "${projectDir}/modules/run_iProphet"
@@ -54,5 +55,6 @@ workflow {
         protein_groups = file("${projectDir}/input/NO_FILE")
     }
     quantify_proteins(final_consensusXML, protein_groups)
-    reheader_ProteinQuantCSV(quantify_proteins.out[0])
+    reheader_ProteinQuantCSV(quantify_proteins.out[0].map { protein, peptide, consensus -> tuple(protein, consensus) })
+    reheader_PeptideQuantCSV(quantify_proteins.out[0].map { protein, peptide, consensus -> tuple(peptide, consensus) })
 }
