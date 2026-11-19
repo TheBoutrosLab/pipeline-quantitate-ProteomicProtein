@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Use profile-specific script mounts in ProteinProphet tasks so Apptainer and Singularity receive `--bind` instead of Docker's `-v` (2026-11-18).
+- Run NFTest through a cluster-aware Python launcher with separate result and temporary directories (2026-11-18).
+
 ## [1.3.0] - 2026-11-11
 
 ### Changed

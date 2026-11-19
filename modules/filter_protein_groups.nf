@@ -3,7 +3,7 @@
 */
 process filter_protein_groups {
     container params.docker_image_pyopenms
-    containerOptions "-v ${projectDir}/src/:${projectDir}/src/"
+    containerOptions params.project_script_mount_options
 
     publishDir params.final_output_dir,
         mode: 'copy',

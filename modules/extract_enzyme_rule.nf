@@ -1,7 +1,7 @@
 /** Extract the OpenMS digestion enzyme rule from idXML for pepXML repair. */
 process extract_enzyme_rule {
     container params.docker_image_pyopenms
-    containerOptions "-v ${projectDir}/src/:${projectDir}/src/"
+    containerOptions params.project_script_mount_options
 
     publishDir "${params.intermediate_file_dir}/${task.process.replace(':', '/')}/",
         mode: 'copy',

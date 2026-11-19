@@ -3,7 +3,7 @@
  */
 process fix_pepxml_termini {
     container params.docker_image_fragpipe
-    containerOptions "-v ${projectDir}/src/:${projectDir}/src/"
+    containerOptions params.project_script_mount_options
 
     publishDir "${params.intermediate_file_dir}/${task.process.replace(':', '/')}/",
         mode: 'copy',
