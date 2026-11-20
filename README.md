@@ -55,4 +55,9 @@ Rost HL et al. OpenMS: a flexible open-source software platform for mass spectro
 
 ## License
 
-See [LICENSE](LICENSE).
+The code in pipeline-quantitate-ProteomicProtein is licensed under the
+BSD 3-Clause License (`BSD-3-Clause`). See [LICENSE](LICENSE) for the terms.
+
+Shared code and third-party tools retain their respective licenses.
+
+Copyright (C) 2026 Sanford Burnham Prebys Medical Discovery Institute ("Boutros Lab")

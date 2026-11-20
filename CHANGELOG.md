@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Migrate the pipeline license from GPL to BSD 3-Clause and update license documentation; shared code and third-party tools retain their respective licenses.
+
 ## [1.3.1] - 2026-11-19
 
 ### Fixed
